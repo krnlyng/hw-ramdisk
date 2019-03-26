@@ -324,6 +324,7 @@ echo "Copying files to initrd root..."
 for i in $(cat $TMPFILE) ; do
         if [ -f "$i" ] ; then
                 debug "adding $i"
+                strip $i || :
                 DEST_DIR=$(dirname "$i" | sed  "s/^\///")
                 d="$ROOT_DIR/$DEST_DIR"
                 [ -d "$d" ] || mkdir -p "$d" || ( echo Fail to create dir $d;\
